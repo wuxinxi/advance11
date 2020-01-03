@@ -1,12 +1,10 @@
 package com.wxx.kotlin.network.service
 
-import com.wxx.kotlin.network.Article
-import com.wxx.kotlin.network.BaseModel
-import com.wxx.kotlin.network.DJango
-import com.wxx.kotlin.network.Data
+import com.wxx.kotlin.network.*
 import io.reactivex.Observable
-import retrofit2.http.GET
-import retrofit2.http.Path
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+import retrofit2.http.*
 
 /**
  * @author ：wuxinxi on 2019/12/25 .
@@ -24,4 +22,21 @@ interface ApiService {
 
     @GET("/request/request")
     fun getTest(): Observable<BaseModel<DJango>>
+
+    @HTTP(method = "DELETE", path = "/mall/userCenter/cardGoodsManage", hasBody = true)
+    fun delete(@Body body: DeleteBody): Observable<BaseModel<String>>
+
+    @FormUrlEncoded
+    @POST("/mall/userCenter/register")
+    fun register(
+        @Field("user_name") user_name: String, @Field("user_pwd") user_pwd: String,
+        @Field("user_mobile") user_mobile: String, @Field("user_address") user_address: String
+    ): Observable<BaseModel<Res>>
+
+
+    @Multipart
+    @POST("/mall/userCenter/register")
+    fun register2(@PartMap body: @JvmSuppressWildcards Map<String,RequestBody>, @Part file: MultipartBody.Part): Observable<BaseModel<Res>>
+
+
 }

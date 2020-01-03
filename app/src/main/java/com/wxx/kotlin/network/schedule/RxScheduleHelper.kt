@@ -23,6 +23,7 @@ class RxScheduleHelper {
                 .flatMap { model: BaseModel<T> ->
                     if (model.errorCode == 0) {
                         if (model.data == null) {
+                            println("响应码：${model.errorCode},message=${model.msg}")
                             Observable.error(ApiException(model.errorCode, "数据结构为空"))
                         } else {
                             Observable.just(model.data)

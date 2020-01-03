@@ -65,3 +65,28 @@ data class Tag(
 )
 
 data class DJango(val data: String)
+
+
+data class DeleteBody(val user_mobile: String, val ids: IntArray)
+
+data class RegisterData(
+    val user_mobile: String,
+    val user_name: String,
+    val user_pwd: String,
+    val user_address: String
+)
+
+data class Res(
+    val register_time: String,
+    val update_time: String,
+    val user_address: String?,
+    val user_birthday: Any?,
+    val user_gender: Int?,
+    val user_icon: Any?,
+    val user_identity_card: Any?,
+    val user_mobile: String?,
+    val user_name: String?,
+    val user_nick_name: Any?,
+    val user_real_name: Any?,
+    val user_sign: String?
+)
